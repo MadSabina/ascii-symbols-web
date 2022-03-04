@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ascii</title>
+</head>
+<body>
+    <header><h1>ASCII ART WEB</h1></header>
+    <form method="POST" action="/ascii-art/">
+        <label for="input">Input:</label><br>
+        {{ if .Input}}
+        <textarea id="input" placeholder="Type something..." name="input" required style="resize:none;width: 20%; height: 100px;">{{ .Input }}</textarea><br>
+        {{ else }}
+        <textarea id="input" placeholder="Type something..." name="input" required style="resize:none;width: 20%; height: 100px;"></textarea><br>
+        {{ end }}
+        <label for="fs">Font:</label>
+        <select name="fs" id="fs">
+            <option value="standard" {{ if eq .Fs "standard" }} selected {{end}}>Standard</option>
+            <option value="shadow" {{ if eq .Fs "shadow"}} selected {{end}}>Shadow</option>
+            <option value="thinkertoy" {{ if eq .Fs "thinkertoy" }} selected {{end}}>Thinkertoy</option>
+            <option value="zigzag" {{ if eq .Fs "zigzag"}} selected {{end}}>Zigzag</option>
+        </select><br><br><br>
+        <button type="submit" name="submit" value="submit">Submit</button>
+    </form>
+    <pre>{{ .Output }}</pre>
+</body>
+</html>
